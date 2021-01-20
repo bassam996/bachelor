@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+{% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+{% if LANGUAGE_CODE == 'ar' %}
+<div class='container mt-5'>
+  <form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+    {% endbuttons %}
+    <p><a href="{% url 'password_reset' %}">نسيت كلمة السر ؟ </a></p>
+    <ul>
+      <a href="{% url 'social:begin' 'facebook' %}">تسجيل الدخول عبر فيس بوك</a>
+    </ul>
+</form>
+</div>
+
+{% else %}
+
+<div class='container mt-5'>
+  <form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Login</button>
+    {% endbuttons %}
+    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    <ul>
+      <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+    </ul>
+</form>
+</div>
+
+{% endif %}
+
+
+{% endblock body %}

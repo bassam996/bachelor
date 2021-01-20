@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block body %}
+
+{% if LANGUAGE_CODE == 'ar' %}
+
+
+<div class='container mx-auto text-center mt-5'>
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+<div class="single-blog col-lg-12 col-md-12">
+  {% if pr_profile.personal_image %}
+  <img class="f-img img-fluid mx-auto" src="{{pr_profile.personal_image.url}}" width="150" height="150" border="1" alt="Image Is Found">
+  {% else %}
+  <img class="f-img img-fluid mx-auto" src="{% static 'img/noimage.png' %}" width="150" height="150" alt="No Image">
+  {% endif %}
+  <h4>
+    <a href="#">{{pr_profile.user.first_name}} {{pr_profile.user.last_name}}</a> <br> <br>
+    <a href="#">{{pr_profile.user.email}}</a> <br> <br>
+    <a href="#">الفرقة : {{pr_profile.select_your_year}}</a> <br> <br>
+    <a href="#">الحالة : {{pr_profile.select_your_status}}</a> <br> <br>
+    <a href="#">اللائحة : {{pr_profile.select_your_regulation}}</a> <br> <br>
+    <a href="#">رقم الموبايل : {{pr_profile.phone_number}}</a> <br> <br> <br>
+    <a href="/accounts/profile/edit"> <button type="submit" class="btn btn-primary">تعديل الصفحه الشخصيه</button> </a> <br>
+    <a href="/firstyear"> <button type="submit" class="btn btn-primary">تصفح الكورسات</button> </a>
+
+  </h4>
+  <br>
+</div>
+</div>
+
+{% else %}
+
+<div class='container mx-auto text-center mt-5'>
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+<div class="single-blog col-lg-12 col-md-12">
+  {% if pr_profile.personal_image %}
+  <img class="f-img img-fluid mx-auto" src="{{pr_profile.personal_image.url}}" width="150" height="150" border="1" alt="Image Is Found">
+  {% else %}
+  <img class="f-img img-fluid mx-auto" src="{% static 'img/noimage.png' %}" width="150" height="150" alt="No Image">
+  {% endif %}
+  <h4>
+    <a href="#">{{pr_profile.user.first_name}} {{pr_profile.user.last_name}}</a> <br> <br>
+    <a href="#">{{pr_profile.user.email}}</a> <br> <br>
+    <a href="#">The Grade : {{pr_profile.select_your_year}}</a> <br> <br>
+    <a href="#">Status : {{pr_profile.select_your_status}}</a> <br> <br>
+    <a href="#">Regulation : {{pr_profile.select_your_regulation}}</a> <br> <br>
+    <a href="#">Phone Number : {{pr_profile.phone_number}}</a> <br> <br> <br>
+    <a href="/accounts/profile/edit"> <button type="submit" class="btn btn-primary">Edit Your Personal Page</button> </a>
+    <a href="/firstyear"> <button type="submit" class="btn btn-primary">Explore Courses</button> </a>
+
+  </h4>
+  <br>
+</div>
+</div>
+
+{% endif  %}
+
+{% endblock body %}

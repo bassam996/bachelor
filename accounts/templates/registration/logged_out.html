@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+{% if LANGUAGE_CODE == 'ar' %}
+
+<br><br><br><br><br>
+<div class='container mt-5 text-center'>
+<h1 mb-5>تم تسجيل خروجك بنجاح </h1> <br> <br>
+<a href="{% url 'login'%}">
+  <h3 class='contcolor'>
+  اضغط هنا لتسجيل الدخول مُجدداً
+  </h3>
+</a>
+</div ><br> <br> <br> <br>
+
+{% else %}
+
+<br><br><br><br><br>
+<div class='container mt-5 text-center'>
+<h1 mb-5>You have been logged out successfully</h1> <br> <br>
+<a href="{% url 'login'%}">
+  <h3 class='contcolor'>
+  Click here to log in again
+  </h3>
+</a>
+</div ><br> <br> <br> <br>
+
+{% endif %}
+
+{% endblock body %}

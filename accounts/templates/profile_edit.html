@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block body %}
+
+<br> <br> <br>
+<div class='container'>
+<form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {% bootstrap_form usform %}
+    {% bootstrap_form prform %}
+    {% if LANGUAGE_CODE == 'ar' %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+    {% endbuttons %}
+    {% else %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    {% endbuttons %}
+    {% endif %}
+</form>
+</div>
+<br>
+
+
+{% endblock body %}

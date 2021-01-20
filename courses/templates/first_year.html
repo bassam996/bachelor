@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body%}
+
+
+			<!-- Start blog Area -->
+{% if LANGUAGE_CODE == 'ar' %}
+
+<section class="blog-area section-gap">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 pb-30 header-text">
+				<h1>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<h3>المزيد من الفرق الدراسية</h3>
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="firstyear">الفرقة الأولى</a>
+							<a class="dropdown-item" href="secondyear">الفرقة الثانية</a>
+							<a class="dropdown-item" href="thirdyear">الفرقة الثالثة</a>
+							<a class="dropdown-item" href="forthyear">الفرقة الرابعة</a>
+						</div>
+					</div>
+		</h1> <br>
+		<h1>كورسات الفرقة الأولى</h1>
+			</div>
+		</div>
+		<div class="row">
+
+			{% for course in first_year_context %}
+			<div class="single-blog col-lg-4 col-md-4">
+				{% if course.image %}
+				<img class="f-img img-fluid mx-auto align-items-center flex-wrap contimg" src="{{course.image.url}}" alt="">
+				{% else %}
+				<img class="f-img img-fluid mx-auto contimg " src="{% static 'img/noimage.png' %}"  alt="">
+				{% endif %}
+				<h4 class='text-center'>
+					<a href="{% url 'courses:firstyeardetails' course.id %}">{{course.name}}</a>
+				</h4>
+				<p class='text-center'>{{course.desc|truncatechars:140}}</p>
+
+				<div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+					<div class='mx-auto'>
+						<a href="{% url 'courses:firstyeardetails' course.id %}">
+						{% buttons %}
+									<button class="btn btn-primary">تفاصيل المادة</button>
+						 {% endbuttons %}
+						</a>
+					</div>
+				</div>
+
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{% else %}
+
+<section class="blog-area section-gap">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 pb-30 header-text">
+				<h1>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<h3>More Academic Years</h3>
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="firstyear">First grade</a>
+							<a class="dropdown-item" href="secondyear">Second grade</a>
+							<a class="dropdown-item" href="thirdyear">Third grade</a>
+							<a class="dropdown-item" href="forthyear">Forth grade</a>
+						</div>
+					</div>
+		</h1> <br>
+		<h1>First Grade Courses</h1>
+			</div>
+		</div>
+		<div class="row">
+
+			{% for course in first_year_context %}
+			<div class="single-blog col-lg-4 col-md-4">
+				{% if course.image %}
+				<img class="f-img img-fluid mx-auto align-items-center flex-wrap contimg" src="{{course.image.url}}" alt="">
+				{% else %}
+				<img class="f-img img-fluid mx-auto contimg " src="{% static 'img/noimage.png' %}"  alt="">
+				{% endif %}
+				{% if LANGUAGE_CODE == 'ar' %}
+				<h4 class='text-center'>
+					<a href="{% url 'courses:firstyeardetails' course.id %}">{{course.name}}</a>
+				</h4>
+				<p class='text-center'>{{course.desc|truncatechars:140}}</p>
+
+				{% else %}
+				<h4 class='text-center'>
+					<a href="{% url 'courses:firstyeardetails' course.id %}">{{course.name_en}}</a>
+				</h4>
+				<p class='text-center'>{{course.desc_en|truncatechars:140}}</p>
+
+				{% endif %}
+				{% if LANGUAGE_CODE == 'ar' %}
+
+				<div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+					<div class='mx-auto'>
+						<a href="{% url 'courses:firstyeardetails' course.id %}">
+						{% buttons %}
+									<button class="btn btn-primary">تفاصيل المادة</button>
+						 {% endbuttons %}
+						</a>
+					</div>
+				</div>
+
+				{% else %}
+
+				<div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+					<div class='mx-auto'>
+						<a href="{% url 'courses:firstyeardetails' course.id %}">
+						{% buttons %}
+									<button class="btn btn-primary">Subject Details</button>
+						 {% endbuttons %}
+						</a>
+					</div>
+				</div>
+
+				{% endif %}
+
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{% endif %}
+			<!-- end blog Area -->
+
+{% endblock body %}

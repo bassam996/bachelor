@@ -1,0 +1,419 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body%}
+
+{% if LANGUAGE_CODE == 'ar' %}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="container"> <br> <br>
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-success" role="alert">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
+			<div class="row align-items-center justify-content-center">
+				<div class="banner-content col-lg-5 col-md-6 col-sm-6">
+					<h1 class="text-uppercase">
+						Bachelor <br>
+					</h1>
+					<h5>
+						موقع تعليمي يشمل جميع التخصصات لطلبة الجامعات في مصر
+					</h5><br>
+					{% if user.is_authenticated %}
+					<a href="/firstyear">
+						<button class="submit-btn primary-btn mt-20 text-uppercase ">الكورسات الخاصة بنا<span class="lnr lnr-arrow-right"></span></button>
+					</a>
+					<a href="/accounts/profile">
+						<button class="submit-btn primary-btn mt-20 text-uppercase ">الصفحة الشخصية<span class="lnr lnr-arrow-right"></span></button>
+					</a>
+					{% else %}
+					<a href="/accounts/signup">
+						<button class="submit-btn primary-btn mt-20 text-uppercase ">إنشاء حساب جديد<span class="lnr lnr-arrow-right"></span></button>
+					</a>
+					<a href="/accounts/login">
+						<button class="submit-btn primary-btn mt-20 text-uppercase ">تسجيل الدخول<span class="lnr lnr-arrow-right"></span></button>
+					</a>
+					{% endif %}
+				</div>
+				<div class="col-lg-7 col-md-6 col-sm-6 d-flex align-self-end">
+					<img class="img-fluid contimgtwo" src="{% static 'img/header-img.png' %}" alt="">
+				</div>
+			</div>
+	</div>
+</section><br><br>
+<!-- End banner Area -->
+
+<!-- Start feature Area -->
+<section id="service">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-sm-12">
+				<div class="single-feature d-flex flex-row pb-30">
+					<div class="icon">
+						<i class="fas fa-university fa-3x mr-2 ml-2"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">الكليات</h3>
+						<p>
+						الموقع يقدم خدمة لجميع طلبة الكليات في مصر في جميع التخصصات
+					</p><br>
+					</div>
+				</div>
+				<div class="single-feature d-flex flex-row pb-30">
+					<div class="icon">
+						 <i class="fas fa-graduation-cap fa-3x ml-1"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">الفرق الدراسية</h3>
+						<p>
+							الموقع يقدم جميع الخدمات لكل الفرق الدراسية في الكليات
+						</p><br>
+					</div>
+				</div>
+				<div class="single-feature d-flex flex-row">
+					<div class="icon">
+						<i class="fas fa-book fa-3x mr-3 ml-2"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">المواد الدراسية</h3>
+						<p>
+						 الموقع يحتوي علي جميع المواد الدراسية لجميع الكليات النظرية والعملية
+						</p>
+					</div>
+				</div> <br> <br>
+			</div>
+			<div class="col-lg-6">
+				<div class="single-feature d-flex flex-row pb-30">
+					<div class="icon">
+						<i class="fas fa-external-link-square-alt fa-3x mr-3 ml-2"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">الكورسات الإضافية</h3>
+						<p>
+				 الموقع سوف يقدم خدمة الكورسات التي يحتاجها الطالب بعد التخرج مثل كورسات اللغة والكمبيوتر
+						</p><br>
+					</div>
+				</div>
+				<div class="single-feature d-flex flex-row pb-30">
+					<div class="icon">
+					 <i class="fas fa-user-shield fa-3x mr-1 ml-1"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">الآمان أثناء التعلم</h3>
+						<p>
+							يتم التدريس عن بعد مما يضمن حمايتك من الإختلاط بالآخرين
+						</p><br>
+					</div>
+				</div>
+				<div class="single-feature d-flex flex-row">
+					<div class="icon">
+						<i class="fas fa-award fa-4x mr-3 ml-1"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">الموثوقية</h3>
+						<p>
+							يتم تدريس المواد على يد أشخاص يتمتعون بخبره في المنهج العلمي للمادة الدراسية
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End feature Area -->
+
+
+
+<!-- Start consultans Area -->
+<section class="consultans-area section-gap" id="consultant">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-8 pb-80 header-text">
+				<h1>من نحن ؟</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-3 vol-wrap">
+				<div class="single-con">
+					<div class="content">
+							<a href="">
+								 <img class="content-image img-fluid d-block mx-auto" src="{% static 'img/home_four.jpg' %}" alt=""> <br>
+								 <h4 class='text-center mx-auto'>اول موقع ريادي لخدمة طلبة الجامعات في مصر</h4>
+							</a>
+					 </div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 vol-wrap">
+				<div class="single-con">
+					<div class="content">
+							<a href="">
+								 <img class="content-image img-fluid d-block mx-auto" src="{% static 'img/home_three.jpg' %}" alt=""> <br>
+								 <h4 class='text-center mx-auto'>Bachelor</h4>
+								 <h4 class='text-center mx-auto'>هتوفرلك كل اللي محتاجله في نظام التعليم الهجين</h4>
+							</a>
+					 </div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 vol-wrap">
+				<div class="single-con">
+					<div class="content">
+							<a href="">
+								 <img class="content-image img-fluid d-block mx-auto" src="{% static 'img/home_two.jpg' %}" alt="">
+							</a><br>
+							<h4 class='text-center mx-auto'>مش هتحتاج تنزل من البيت وفرنالك وقت الزحمة و المواصلات</h4>
+					 </div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 vol-wrap">
+				<div class="single-con">
+					<div class="content">
+							<a href="">
+								 <img class="content-image img-fluid d-block mx-auto" src="{% static 'img/home_one.jpg' %}" alt=""><br>
+								 <h4 class='text-center mx-auto'>Bachelor</h4>
+								 <h4 class='text-center mx-auto'>جايبنلك الكورس لحد البيت</h4>
+							</a>
+					 </div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+</section>
+<!-- End consultans Area -->
+
+<!-- Start fact Area -->
+<section class="facts-area pt-100 pb-100">
+	<div class="container">
+		<h2 class='text-center mx-auto'>متاح لدينا حتى الآن</h2><br><br><br>
+		<div class="row">
+			<div class="col-lg-3 col-md-6 single-fact">
+				<h2 class="counter">0</h2>
+				<p class="text-uppercase">الكورسات الإضافية</p>
+			</div>
+			<div class="col-lg-3 col-md-6 single-fact">
+				<h2 class="counter">24</h2>
+				<p class="text-uppercase">المواد</p>
+			</div>
+			<div class="col-lg-3 col-md-6 single-fact">
+				<h2 class="counter">4</h2>
+				<p class="text-uppercase">الفرق الدراسية</p>
+			</div>
+			<div class="col-lg-3 col-md-6 single-fact">
+				<h2 class="counter">1</h2>
+				<p class="text-uppercase">الكليات</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- end fact Area -->
+
+{% else %}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="container"> <br> <br>
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-success" role="alert">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
+			<div class="row align-items-center justify-content-center">
+				<div class="banner-content col-lg-5 col-md-6 col-sm-6">
+					<h1 class="text-uppercase">
+						Bachelor <br>
+					</h1>
+					<h5>
+          An educational site that includes all disciplines for university students in Egypt	</h5><br>
+					{% if user.is_authenticated %}
+					<a href="/firstyear">
+						<button class="submit-btn primary-btn mt-20 text-uppercase ">Our Courses<span class="lnr lnr-arrow-right"></span></button>
+					</a>
+					<a href="/accounts/profile">
+						<button class="submit-btn primary-btn mt-20 text-uppercase ">Personal Page<span class="lnr lnr-arrow-right"></span></button>
+					</a>
+					{% else %}
+					<a href="/accounts/signup">
+						<button class="submit-btn primary-btn mt-20 text-uppercase ">Create New Account<span class="lnr lnr-arrow-right"></span></button>
+					</a>
+					<a href="/accounts/login">
+						<button class="submit-btn primary-btn mt-20 text-uppercase ">SignIn<span class="lnr lnr-arrow-right"></span></button>
+					</a>
+					{% endif %}
+				</div>
+				<div class="col-lg-7 col-md-6 col-sm-6 d-flex align-self-end">
+					<img class="img-fluid contimgtwo" src="{% static 'img/header-img.png' %}" alt="">
+				</div>
+			</div>
+	</div>
+</section><br><br>
+<!-- End banner Area -->
+
+<!-- Start feature Area -->
+<section id="service">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-sm-12">
+				<div class="single-feature d-flex flex-row pb-30">
+					<div class="icon">
+						<i class="fas fa-university fa-3x mr-2 ml-2"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">Colleges</h3>
+						<p>
+           The site provides a service for all college students in Egypt in all disciplines</p><br>
+					</div>
+				</div>
+				<div class="single-feature d-flex flex-row pb-30">
+					<div class="icon">
+						 <i class="fas fa-graduation-cap fa-3x"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">Academic Grades</h3>
+						<p>
+           Provides all services for all academic Grades in colleges</p><br>
+					</div>
+				</div>
+				<div class="single-feature d-flex flex-row">
+					<div class="icon">
+						<i class="fas fa-book fa-3x mr-2 ml-1"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">Academic Materials</h3>
+						<p>
+           The site contains all the study materials for all theoretical and practical colleges</p>
+					</div>
+				</div> <br> <br>
+			</div>
+			<div class="col-lg-6">
+				<div class="single-feature d-flex flex-row pb-30">
+					<div class="icon">
+						<i class="fas fa-external-link-square-alt fa-3x mr-2 ml-1"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">Additional courses</h3>
+						<p>
+      The site will provide the course service that the student needs after graduation, such as language and computer courses</p><br>
+					</div>
+				</div>
+				<div class="single-feature d-flex flex-row pb-30">
+					<div class="icon">
+					 <i class="fas fa-user-shield fa-3x"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">Safety while learning</h3>
+						<p>
+      Teaching is carried out from a distance, ensuring that you are protected from contact with others</p><br>
+					</div>
+				</div>
+				<div class="single-feature d-flex flex-row">
+					<div class="icon">
+						<i class="fas fa-award fa-4x mr-2"></i>
+					</div>
+					<div class="desc">
+						<h3 class="text-uppercase contcolor">Reliability</h3>
+						<p>
+      The subjects are taught by people who have experience in the scientific method of the Academic Materials</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End feature Area -->
+
+
+
+<!-- Start consultans Area -->
+<section class="consultans-area section-gap" id="consultant">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-8 pb-80 header-text">
+				<h1>who are we ?</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-3 vol-wrap">
+				<div class="single-con">
+					<div class="content">
+							<a href="">
+								 <img class="content-image img-fluid d-block mx-auto" src="{% static 'img/home_four.jpg' %}" alt=""> <br>
+								 <h4 class='text-center mx-auto'>The first leading site to serve university students in Egypt</h4>
+							</a>
+					 </div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 vol-wrap">
+				<div class="single-con">
+					<div class="content">
+							<a href="">
+								 <img class="content-image img-fluid d-block mx-auto" src="{% static 'img/home_three.jpg' %}" alt=""> <br>
+								 <h4 class='text-center mx-auto'>Bachelor</h4>
+								 <h4 class='text-center mx-auto'>We will provide you with everything you need in a hybrid education system</h4>
+							</a>
+					 </div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 vol-wrap">
+				<div class="single-con">
+					<div class="content">
+							<a href="">
+								 <img class="content-image img-fluid d-block mx-auto" src="{% static 'img/home_two.jpg' %}" alt="">
+							</a><br>
+							<h4 class='text-center mx-auto'>You will not need to go out and we will save you time on public transportation</h4>
+					 </div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 vol-wrap">
+				<div class="single-con">
+					<div class="content">
+							<a href="">
+								 <img class="content-image img-fluid d-block mx-auto" src="{% static 'img/home_one.jpg' %}" alt=""><br>
+								 <h4 class='text-center mx-auto'>Bachelor</h4>
+								 <h4 class='text-center mx-auto'>We'll bring you the course to your home</h4>
+							</a>
+					 </div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+</section>
+<!-- End consultans Area -->
+
+<!-- Start fact Area -->
+<section class="facts-area pt-100 pb-100">
+	<div class="container">
+		<h2 class='text-center mx-auto'>the available to us until now</h2><br><br><br>
+		<div class="row">
+			<div class="col-lg-3 col-md-6 single-fact">
+				<h2 class="counter">0</h2>
+				<p class="text-uppercase">Additional courses</p>
+			</div>
+			<div class="col-lg-3 col-md-6 single-fact">
+				<h2 class="counter">24</h2>
+				<p class="text-uppercase">Materials</p>
+			</div>
+			<div class="col-lg-3 col-md-6 single-fact">
+				<h2 class="counter">4</h2>
+				<p class="text-uppercase">Academic Grades</p>
+			</div>
+			<div class="col-lg-3 col-md-6 single-fact">
+				<h2 class="counter">1</h2>
+				<p class="text-uppercase">Colleges</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- end fact Area -->
+{% endif %}
+
+{% endblock body %}
