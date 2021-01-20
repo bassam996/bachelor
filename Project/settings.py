@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import django_heroku
+import dj_database_url
+from decouple import config
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
@@ -59,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'Project.urls'
@@ -152,6 +156,8 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 
+STATICfiles_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
 
@@ -179,3 +185,5 @@ MESSAGE_TAGS = {
 
 SOCIAL_AUTH_FACEBOOK_KEY = '192595199237439'
 SOCIAL_AUTH_FACEBOOK_SECRET = '90f43887c3e09362aeabb5bd63275469'
+
+django_heroku.settings(locals())
